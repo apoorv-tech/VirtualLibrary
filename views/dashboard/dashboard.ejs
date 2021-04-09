@@ -26,7 +26,7 @@
                     </li>
                 <% } %> 
                 <li class="nav-link ab">
-                    <a href="">Books We serve</a>
+                    <a href="/viewbook">Books We serve</a>
                 </li>
                 <li class="nav-link foot ab">
                     <a id="abc">About Us</a>
@@ -53,31 +53,18 @@
         <div class="blog">
             <div class="container">
                 <div class="owl-carousel owl-theme blog-post">
-                    <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
-                        <img src="../images/courosal1.jpg" alt="post-1">
-                        <div class="blog-title">
-                            <h3>Heading 1</h3>
+                    <% let i=0 %> 
+                    <% books.forEach(book=>{ %>
+                        <% i++ %> 
+                        <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
+                            <% const bookoid = "/viewbook/type1/"+book._id %> 
+                            
+                            <a href=<%= bookoid %> ><img class="book-cover" src="<%= book.coverImagePath  %> " alt="post-1"></a>
+                            <div class="blog-title">
+                                <h3><%= book.title %> At Trending#<%= i %></h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-content" data-aos="fade-in" data-aos-delay="200">
-                        <img src="../images/courosal2.jpg" alt="post-1">
-                        <div class="blog-title">
-                            <h3>Heading 2</h3>
-                        </div>
-                    </div>
-                    <div class="blog-content" data-aos="fade-left" data-aos-delay="200">
-                        <img src="../images/courosal3.jpg" alt="post-1">
-                        <div class="blog-title">
-                            <h3>Heading 3</h3>
-                        </div>
-                    </div>
-                    <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
-                        <img src="../images/corousal4.jpg" alt="post-1">
-                        <div class="blog-title">
-                            <h3>Heading 4</h3>
-                        </div>
-                    </div>
-                </div>
+                    <% }) %> 
                 <div class="owl-navigation">
                     <span class="owl-nav-prev"><<</span>
                     <span class="owl-nav-next">>></span>
@@ -93,39 +80,20 @@
     <section class="container">
         <div class="site-content">
             <div class="posts">
-                <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="post-image">
-                        <div>
-                            <img src="../images/harrypotter.jpg" class="img" alt="blog1">
-                        </div>
-                        <div class="post-info flex-row">
-                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Harry Pooter and the cursed child</span>
-                            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;21/12/2020</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="post-image">
-                        <div>
-                            <img src="../images/harrypotter.jpg" class="img" alt="blog1">
-                        </div>
-                        <div class="post-info flex-row">
-                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Introduction to DS/Algo</span>
-                            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;21/12/2020</span>
+                <% locals.user.books.forEach(book => {%>
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="<%= book.coverImage%>" class="img" alt="blog1">
+                            </div>
+                            <div class="post-info flex-row">
+                                <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;<%= book.title %> </span>
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="post-image">
-                        <div>
-                            <img src="../images/harrypotter.jpg" class="img" alt="blog1">
-                        </div>
-                        <div class="post-info flex-row">
-                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Introduction to DS/Algo</span>
-                            <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;21/12/2020</span>
-                        </div>
-                    </div>
-                </div>
+                <%}); %> 
+                
                 
 
             </div>
@@ -133,34 +101,13 @@
                 <div class="category">
                     <h2>Collection</h2>
                     <ul class="category-list">
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-                            <a href="#">Computer Science and Engineering</a>
-                            <span>(05)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="200">
-                            <a href="#">Information Techonlogy</a>
-                            <span>(02)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="300">
-                            <a href="#">ECE</a>
-                            <span>(07)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="400">
-                            <a href="#">Electrical</a>
-                            <span>(01)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                            <a href="#">Civil Engineering</a>
-                            <span>(08)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                            <a href="#">Chemical Engineering</a>
-                            <span>(05)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                            <a href="#">Aerospace Engineering</a>
-                            <span>(01)</span>
-                        </li>
+                        <% categories.forEach(category=>{ %>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                                <a href="#"><%= category.category %></a>
+                                <span>(<%= category.count %> )</span>
+                            </li>    
+                        <% }) %> 
+                        
                     </ul>
                 </div>
 

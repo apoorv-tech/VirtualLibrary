@@ -22,6 +22,20 @@ const userSchema = new mongoose.Schema({
         required:[true,"Please enter an password"],
         minlength:[4,"Minimum password is 4 characters"]
     },
+    books:[{
+        bookid : { 
+            type: mongoose.Schema.Types.ObjectId
+        },
+        title:{
+            type:String
+        },
+        coverImage:{
+            type: String,
+            required:true
+        }
+    }
+        
+    ]
 })
 
 //mongoose hook to hash the password

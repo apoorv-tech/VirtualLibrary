@@ -21,7 +21,7 @@
                     <a >About Us</a>
                 </li>
                 <li class="nav-link">
-                    <a href="/dashboard">Books We serve</a>
+                    <a href="/viewbook">Books We serve</a>
                 </li>
                 <% if(locals.user) { %>
                     <li class="nav-link"><a href="/logout">Logout</a></li>
@@ -59,11 +59,13 @@
         <div class="blog">
             <div class="container">
                 <div class="owl-carousel owl-theme blog-post">
+                    <% let i=0 %> 
                     <% books.forEach(book=>{ %>
+                        <% i++ %> 
                         <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
-                            <img class="book-cover" src="<%= book.coverImagePath  %> " alt="post-1">
+                            <img class="book-cover" src="<%= book.coverImagePath  %>" alt="post-1">
                             <div class="blog-title">
-                                <h3><%= book.title %></h3>
+                                <h3><%= book.title %> At Trending#<%= i %></h3>
                             </div>
                         </div>
                     <% }) %> 
@@ -85,10 +87,10 @@
                 <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
                     <div class="post-image">
                         <div>
-                            <img src="/images/Abstract Art Canvas (1).png" class="img" alt="blog1">
+                            <img src="<%= books[0].coverImagePath  %> " class="img" alt="blog1">
                         </div>
                         <div class="post-info flex-row">
-                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;Introduction to DS/Algo</span>
+                            <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;<%= books[0].title  %> </span>
                             <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;Trending #1</span>
                         </div>
                     </div>
@@ -100,34 +102,12 @@
                 <div class="category">
                     <h2>Collection</h2>
                     <ul class="category-list">
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-                            <a href="#">Computer Science and Engineering</a>
-                            <span>(05)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="200">
-                            <a href="#">Information Techonlogy</a>
-                            <span>(02)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="300">
-                            <a href="#">ECE</a>
-                            <span>(07)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="400">
-                            <a href="#">Electrical</a>
-                            <span>(01)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                            <a href="#">Civil Engineering</a>
-                            <span>(08)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                            <a href="#">Chemical Engineering</a>
-                            <span>(05)</span>
-                        </li>
-                        <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-                            <a href="#">Aerospace Engineering</a>
-                            <span>(01)</span>
-                        </li>
+                        <% categories.forEach(category=>{ %>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                                <a href="#"><%= category.category %></a>
+                                <span>(<%= category.count %> )</span>
+                            </li>    
+                        <% }) %> 
                     </ul>
                 </div>
 

@@ -35,7 +35,21 @@ const UserSchema = new mongoose.Schema({
     },
     admin :{
         type:Boolean
+    },
+    books:[{
+        bookid : { 
+            type: mongoose.Schema.Types.ObjectId
+        },
+        title:{
+            type:String
+        },
+        coverImage:{
+            type: String,
+            required:true
+        }
     }
+        
+    ]
 })
 
 module.exports = mongoose.model('User2', UserSchema);

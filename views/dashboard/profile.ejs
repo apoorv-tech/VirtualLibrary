@@ -1,7 +1,12 @@
 <header>
 
     <div class="user">
-        <img src="<%= locals.user.image %>" alt="">
+        <% if(locals.user.image){ %>
+            <img src="<%= locals.user.image %>" alt="">
+        <% } else { %>
+             <img src="/images/profil.svg" alt="">
+        <%} %> 
+        
         <h3 class="name">
                 <% if(locals.user.displayName) { %>
                     <%= locals.user.displayName %> 
@@ -71,6 +76,16 @@
                 <%= locals.user.email %> 
             <% } %>
         </h3>
+        <% if(locals.user.admin) { %>
+
+        <h3>
+            <span> Status : Admin</span> 
+        </h3>
+        
+
+<%  
+    
+    }%> 
         
     </div>
 </div>
@@ -83,10 +98,10 @@
     <hr>
     <div class="read">
         <ul>
-            <li>Harry Potter</li>
-            <li>INtroduction to Data Structures</li>
-            <li>Algorithm</li>
-            <li>The Alchemist</li>
+            <% locals.user.books.forEach(book => {%>
+                <li><%= book.title %></li>
+            <%}); %> 
+            
         </ul>
     </div>
     

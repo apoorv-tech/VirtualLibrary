@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const Indexrouter  = require('./routes/index')
+const viewbookrouter  = require('./routes/viewbook/viewbook')
 const Authrouter  = require('./routes/authcontroller')
 const dashboardrouter  = require('./routes/dashboard/dashboard')
 const {requireauth,checkuser} = require("./middleware/authmiddleware")
@@ -57,6 +58,7 @@ connectDB();
 app.use('/',Indexrouter)
 app.use('/dashboard',dashboardrouter)
 app.use('/auth', require('./routes/auth'));
+app.use('/viewbook',viewbookrouter);
 app.use(Authrouter)
 
 

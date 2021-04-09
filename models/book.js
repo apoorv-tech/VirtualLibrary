@@ -36,6 +36,16 @@ const bookSchema = new mongoose.Schema({
     pdfType:{
         type:String,
         required: true
+    },
+    users:[{
+        userid : { 
+            type: mongoose.Schema.Types.ObjectId
+        }
+    }
+        
+    ],
+    count:{
+        type: Number
     }
 })
 
