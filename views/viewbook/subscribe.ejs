@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="wrapper animated bounceInLeft">
+      <div class="book-info">
+        <ul>
+          <li class="nav-link">
+            <a href="../public/home.html">HOME</a>
+        </li>
+        <li class="nav-link">
+          <a href="./Profile.html">PROFILE</a>
+      </li>
+      <li class="nav-link">
+        <a href="./viewbooks.html">ADDED BOOKS</a>
+    </li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>Book Detail</h3>
+        <form>
+          <p>
+            <label>Book Name</label>
+            <h2><%= book.title %></h2>
+          </p>
+          <p>
+            <label>Category</label>
+            <h2><%= book.category %></h2>
+          </p>
+          <p>
+            <label>Page Count</label>
+            <h2><%= book.pageCount %></h2>
+          </p>
+          <p class="full">
+            <label>Description</label>
+            <p id="description"><%= book.description %>
+            </p>
+          </p>
+          <p class="full">
+            <% if(subscribed) { %>
+              <a href="/viewbook/unsubscribe/<%= book._id %>">UnSubscribe</a>
+          <% } else { %>
+            <a href="/viewbook/subscribe/<%= book._id %>">Subscribe</a>
+          <% } %>
+            
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
