@@ -1,0 +1,131 @@
+<header>
+
+    <div class="user">
+        <img src="<%= locals.user.image %>" alt="">
+        <h3 class="name">
+                <% if(locals.user.displayName) { %>
+                    <%= locals.user.displayName %> 
+                <% } else { %>
+                    <%= locals.user.username %> 
+                <% } %>
+        </h3>
+        
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">about me</a></li>
+            <li><a href="#bookssuscribed">Books Subscribed</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="/logout">Log out</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- header section ends -->
+
+<div id="menu" class="fas fa-bars"></div>
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <h3>HI !</h3>
+    <h1>I'M
+        <% if(locals.user.firstName) { %>
+            <%= locals.user.firstName %> 
+        <% } else { %>
+            <%= locals.user.username %> 
+        <% } %>
+    </h1>
+    <a href="#about"><button class="btn">About me <i class="fas fa-user"></i></button></a>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+<h1 class="heading"> <span>about</span> me </h1>
+
+<div class="row">
+
+    <div class="info">
+        <h3> 
+            <span> Name : </span> 
+            <% if(locals.user.displayName) { %>
+                <%= locals.user.displayName %> 
+            <% } else { %>
+                <%= locals.user.username %> 
+            <% } %>
+        </h3>
+        <h3> 
+            <span> Email : </span> 
+            <% if(locals.user.mail) { %>
+                <%= locals.user.mail %> 
+            <% } else { %>
+                <%= locals.user.email %> 
+            <% } %>
+        </h3>
+        
+    </div>
+</div>
+
+</section>
+<!--books suscribed-->
+
+<section class="bookssuscribed"id="bookssuscribed">
+    <h1 class="heading">  <span>Books  </span>subscribed</h1>
+    <hr>
+    <div class="read">
+        <ul>
+            <li>Harry Potter</li>
+            <li>INtroduction to Data Structures</li>
+            <li>Algorithm</li>
+            <li>The Alchemist</li>
+        </ul>
+    </div>
+    
+</section>
+
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+<h1 class="heading"> <span>contact</span> me </h1>
+
+<div class="row">
+
+    <div class="content">
+
+        <h3 class="title">contact info</h3>
+
+        <div class="info">
+            <h3> <i class="fas fa-envelope"></i> username@gmail.com </h3>
+            <h3> <i class="fas fa-phone"></i> +354-647-7483 </h3>
+            
+        </div>
+
+    </div>
+
+    <form action="">
+
+        <input type="text" placeholder="name" class="box">
+        <input type="email" placeholder="email" class="box">
+        <textarea name="" id="" cols="30" rows="10" class="box message" placeholder="message"></textarea>
+        <button type="submit" class="btn"> send <i class="fas fa-paper-plane"></i> </button>
+
+    </form>
+
+</div>
+
+</section>
+
+<a href="#home" class="top">
+    <img src="/images/scroll-top-img.png" alt="">
+</a>

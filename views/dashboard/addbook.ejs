@@ -1,0 +1,54 @@
+<!-- ------------x---------------  Navigation --------------------------x------------------- -->
+<div class="container">
+  <div class="wrapper animated bounceInLeft">
+    <div class="book-info">
+      <ul>
+        <li class="nav-link">
+          <a href="/">HOME</a>
+      </li>
+      <li class="nav-link">
+        <a href="/dashboard/profile">PROFILE</a>
+    </li>
+    <li class="nav-link">
+      <a href="#">ADDED BOOKS</a>
+  </li>
+      </ul>
+    </div>
+    <div class="contact">
+      <h3>Add Book</h3>
+      <form action="/dashboard/addbook" method="POST">
+        <p>
+          <label>Book Name</label>
+          <input type="text" name="name" value="<%= book.title %>" required/>
+        </p>
+        <p>
+          <label>Category</label>
+          <input type="text" name="category" value="<%= book.category %>" required/>
+        </p>
+        <p>
+          <label>Page Count</label>
+          <input type="number" name="pageCount" min="1" value="<%= book.pageCount %> " required/>
+        </p>
+        <p>
+          <label for="file-ip-1">CoverPage</label>
+          <input type="file" id="file-ip-1" name="cover" class="book-cover filepond" required/>
+        </p>
+        <p>
+          <label>Add Pdf</label>
+          <!-- <input type="file" id="formFile2" name="pdf" class="book-cover filepond form-control" required/> -->
+          <input class="form-control filepond" type="file" id="formFile2"  name="pdf" required/>
+          <div class="preview">
+            <img id="file-ip-1-preview">
+          </div>  
+        </p>
+        <p class="full">
+          <label>Description</label>
+          <textarea name="description" rows="10" required><%= book.description %></textarea>
+        </p>
+        <p class="full">
+          <button type="submit">Add</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
