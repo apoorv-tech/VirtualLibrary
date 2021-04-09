@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Book</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link rel="stylesheet" href="../css/addbook.css">
+</head>
+<body>
+  
+<!-- ------------x---------------  Navigation --------------------------x------------------- -->
+  <div class="container">
+    <div class="wrapper animated bounceInLeft">
+      <div class="book-info">
+        <ul>
+          <li class="nav-link">
+            <a href="../public/home.html">HOME</a>
+        </li>
+        <li class="nav-link">
+          <a href="#">PROFILE</a>
+      </li>
+      <li class="nav-link">
+        <a href="#">ADDED BOOKS</a>
+    </li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>Add Book</h3>
+        <form>
+          <p>
+            <label>Book Name</label>
+            <input type="text" name="name">
+          </p>
+          <p>
+            <label>Category</label>
+            <input type="text" name="category">
+          </p>
+          <p>
+            <label>Page No.</label>
+            <input type="text" name="pageno">
+          </p>
+          <p>
+            <label for="file-ip-1">CoverPage</label>
+            <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+          </p>
+          <p>
+            <label>Add Pdf</label>
+            <input class="form-control" type="file" id="formFile2">
+            <div class="preview">
+              <img id="file-ip-1-preview">
+          </p>
+          <p class="full">
+            <label>Description</label>
+            <textarea name="message" rows="10"></textarea>
+          </p>
+          <p class="full">
+            <button>Add</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="../js/addbook.js"></script>
+</body>
+</html>
