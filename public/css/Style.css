@@ -182,7 +182,7 @@ main .site-title .site-background{
 
 main .site-title h1, h3{
     margin: .3rem;
-    color: rgb(67, 31, 78);
+    color: rgba(224, 115, 64, 0.651)
 }
 
 main .site-title .btn{

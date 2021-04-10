@@ -3,7 +3,7 @@ const Book = require('../models/book')
 const Category = require('../models/category')
 const {requireauth} = require("../middleware/authmiddleware")
 const router = express.Router();
-
+const {requireauth} = require("../middleware/authmiddleware")
 
 router.get('/:id',requireauth,async(req,res)=>{
     try {

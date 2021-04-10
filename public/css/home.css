@@ -124,8 +124,6 @@ p{
     color: var(--text-gray);
 }
 
-
-
 .nav .nav-items{
     display: flex;
     margin: 0;
@@ -446,6 +444,9 @@ footer.footer .move-up span:hover{
     }
     .nav .nav-menu, .nav .nav-items{
         flex-direction: column;
+    }
+    .collapse{ 
+        height: 40rem;
     }
 
     .nav .toggle-collapse{
