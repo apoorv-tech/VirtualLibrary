@@ -96,7 +96,25 @@
     display:none;
     margin-top:10px;
   }
-  
+  span{
+    background: rgba(73, 88, 92, 0.623);
+    padding:0.5px;
+    position: absolute;
+    border-radius: 1rem;
+    
+  }
+  span a{
+    text-decoration: none;
+    color: white;
+    padding:1px;
+    font-size:medium ;
+  }
+  span a:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding:1px;
+    background: transparent;
+  }
   .contact form label{
     display:block;
   }
