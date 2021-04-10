@@ -69,7 +69,10 @@ router.get('/type1/:id',requireauth,async(req,res)=>{
             }
         
         if(exists){
-            res.redirect('/room/'+book._id)
+            if(res.locals.user.firstName)
+                res.redirect('/room/'+book._id+'?uid='+res.locals.user.firstName+'&&hassub=false&&room='+book.title)
+            else
+            res.redirect('/room/'+book._id+'?uid='+res.locals.user.username+'&&hassub=false&&room='+book.title)
         }
         else{
             res.render('viewbook/subscribe',{

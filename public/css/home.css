@@ -124,9 +124,7 @@ p{
     color: var(--text-gray);
 }
 
-.collapse{ 
-    height: 40rem;
-}
+
 
 .nav .nav-items{
     display: flex;
@@ -441,7 +439,11 @@ footer.footer .move-up span:hover{
 
 /*              Viewport less then or equal to 750px            */
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 900px){
+
+    .collapse{ 
+        height: 40rem;
+    }
     .nav .nav-menu, .nav .nav-items{
         flex-direction: column;
     }
