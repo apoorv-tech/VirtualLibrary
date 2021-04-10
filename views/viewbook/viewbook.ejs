@@ -26,7 +26,11 @@
                 </li>
                 
                 <li class="nav-link ab">
-                    <a id="abc" href="/logout">Log Out</a>
+                    <% if(locals.user) { %>
+                        <li class="nav-link"><a href="/logout">Logout</a></li>
+                      <% } else { %>
+                        <li class="nav-link"><a href="/login">Login</a></li>
+                      <% } %>
                 </li>
             </ul>
         </div>
@@ -40,22 +44,36 @@
     <thead>
         <tr>
         <th>Book Name</th>
-        <th>Catagory</th>
+        <th>Category</th>
         <th>Page No.</th>
         <th>Subscribe</th>
         </tr>
     </thead>
     <tbody>
+        <% if(fileused == "viewbook"){ %>
+            <% books.forEach(book => { %>
+                <tr>
+                    <td><%= book.title %> </td>
+                    <td><a href="/viewbook/category/<%= book.category %> "><%= book.category %></a></td>
+                    <td><%= book.pageCount %></td>
+                    
+                    <td><button class="btn-outline-success" type="button" id="subscribe"><a href="/viewbook/type2/<%= book._id %> ">Details</a></button></td>
+                    </tr>
+            <%}) %> 
+        <% }  else{ %> 
+
         
-        <% books.forEach(book => { %>
-            <tr>
-                <td><%= book.title %> </td>
-                <td><%= book.category %></td>
-                <td><%= book.pageCount %></td>
-                
-                <td><button class="btn-outline-success" type="button" id="subscribe"><a href="/viewbook/type2/<%= book._id %> ">Subscribe</a></button></td>
-                </tr>
-        <%}) %> 
+            <% books.forEach(book => { %>
+                <tr>
+                    <td><%= book.title %> </td>
+                    <td><%= category %></td>
+                    <td><%= book.pageCount %></td>
+                    
+                    <td><button class="btn-outline-success" type="button" id="subscribe"><a href="/viewbook/type2/<%= book.bookid %> ">Details</a></button></td>
+                    </tr>
+            <%}) %> 
+        <% } %> 
+        
 
         
 

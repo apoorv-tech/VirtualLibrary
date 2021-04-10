@@ -14,9 +14,7 @@
                 <li class="nav-link">
                     <a href="#">Home</a>
                 </li>
-                <li class="nav-link">
-                    <a href="#">Coding Plateform</a>
-                </li>
+                
                 <li class="nav-link foot">
                     <a >About Us</a>
                 </li>
@@ -104,7 +102,7 @@
                     <ul class="category-list">
                         <% categories.forEach(category=>{ %>
                             <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-                                <a href="#"><%= category.category %></a>
+                                <a href="/viewbook/category/<%= category.category %> "><%= category.category %></a>
                                 <span>(<%= category.count %> )</span>
                             </li>    
                         <% }) %> 
