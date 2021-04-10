@@ -215,7 +215,11 @@ function outputMessage(data) {
   div.classList.add('message');
   const p = document.createElement('p');
   p.classList.add('meta');
-  p.innerText = data.user;
+  if(data.user==""){
+    p.innerText = bookid;
+  }else{
+    p.innerText = data.user;
+  }
   div.appendChild(p);
   const para = document.createElement('p');
   para.classList.add('text');

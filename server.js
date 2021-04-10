@@ -89,7 +89,7 @@ io.sockets.on('connection',(socket)=>{
     socket.on("join",(data)=>{
         if(data.hassub){
             console.log('user has connected with us')
-            // socket.emit('adduser',data.userid)
+            io.to(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
         }
         socket.join(socket.bookid)
     })
