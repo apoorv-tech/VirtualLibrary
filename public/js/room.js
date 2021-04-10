@@ -22,18 +22,6 @@ const scale = 1.5,
   const pdfdata = document.querySelector('#pdf')
   const pdfbase64 = pdfdata.innerText
   const pdfbase64_2 = pdfbase64.substr(56,pdfbase64.length-60)
-  console.log(pdfbase64[40])
-  console.log(pdfbase64[41])
-  console.log(pdfbase64[42])
-  console.log(pdfbase64[43])
-  console.log(pdfbase64[44])
-  console.log(pdfbase64[45])
-  console.log(pdfbase64[46])
-  console.log(pdfbase64[56])
-  console.log(pdfbase64.length)
-  console.log(pdfbase64[pdfbase64.length-5])
-  console.log(pdfbase64_2[0])
-  console.log(pdfbase64_2[pdfbase64_2.length-1])
 
 // Render the page
 const renderPage = num => {
