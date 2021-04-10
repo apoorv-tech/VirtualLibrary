@@ -87,7 +87,13 @@
                                 <img src="<%= book.coverImage%>" class="img" alt="blog1">
                             </div>
                             <div class="post-info flex-row">
-                                <a href="/room/<%= book.bookid %>"><span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;<%= book.title %> </span></a>
+                                <% let userid %> 
+                                <% if(locals.user.username){ %>
+                                    <% userid = locals.user.username %> 
+                               <% } else { %>
+                                    <% userid = locals.user.firstName %> 
+                               <% } %> 
+                                <a href="/room/<%= book.bookid %>?uid=<%= userid %>&&hassub=<%= false %>&&room=<%= book.title %>"><span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;<%= book.title %> </span></a>
                                 
                             </div>
                         </div>

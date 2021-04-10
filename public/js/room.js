@@ -105,3 +105,135 @@ pdfjsLib
 // Button Events
 document.querySelector('#prev-page').addEventListener('click', showPrevPage);
 document.querySelector('#next-page').addEventListener('click', showNextPage);
+
+
+function getParameterByName(name, url = window.location.href) {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+let socket;
+
+const hassub = getParameterByName('hassub')
+const userid = getParameterByName('uid')
+const bookid = getParameterByName('room')
+const chatForm = document.getElementById('chat-form');
+const chatMessages = document.querySelector('.chat-messages');
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
+const togglebtn = document.querySelector('#togglebtn')
+
+let exists = false
+
+if(hassub=="true")exists=true
+
+socket = io.connect('http://127.0.0.1:4000',{
+  query: {
+    userid: String(userid),
+    bookdid: String(bookid) 
+  }
+})
+socket.emit("join",{hassub : exists})
+socket.emit("message","hemmlo bhio")
+
+socket.on("adduser",(user)=>{
+  const li = document.createElement('li');
+  li.innerText = user;
+  li.className = "userx"
+  userList.appendChild(li);
+})
+
+socket.on("removeuser",(user)=>{
+  console.log(user)
+  const arr = document.querySelectorAll('.userx')
+  for(let i=0;i<arr.length;i++){
+    //console.log(arr[i])
+    if(arr[i].innerHTML==user){
+      console.log(arr[i])
+      arr[i].parentNode.removeChild(arr[i])
+    }
+  }
+})
+
+
+
+
+// // Add users to DOM
+// function outputUsers(users) {
+//   userList.innerHTML = '';
+//   users.forEach((user) => {
+//     const li = document.createElement('li');
+//     li.innerText = user.username;
+//     userList.appendChild(li);
+//   });
+// }
+
+// socket.on("adduser",(user)=>{
+//   outputUsers
+// })
+
+
+togglebtn.addEventListener('click',()=>{
+  if(togglebtn.innerHTML=="Join Voice"){
+    socket.emit("adduser",userid)
+    togglebtn.innerHTML="Leave Voice"
+  }else{
+    socket.emit("removeuser",userid)
+    togglebtn.innerHTML="Join Voice"
+  }
+})
+
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Get message text
+  let msg = e.target.elements.msg.value;
+
+  msg = msg.trim();
+
+  if (!msg) {
+    return false;
+  }
+
+  // Emit message to server
+  socket.emit('chatMessage', {msg : msg,user : userid});
+
+  // Clear input
+  e.target.elements.msg.value = '';
+  e.target.elements.msg.focus();
+});
+
+
+
+// Output message to DOM
+function outputMessage(data) {
+  const div = document.createElement('div');
+  div.classList.add('message');
+  const p = document.createElement('p');
+  p.classList.add('meta');
+  if(data.user==""){
+    p.innerText = bookid;
+  }else{
+    p.innerText = data.user;
+  }
+  div.appendChild(p);
+  const para = document.createElement('p');
+  para.classList.add('text');
+  para.innerText = data.msg;
+  div.appendChild(para);
+  document.querySelector('.chat-messages').appendChild(div);
+}
+
+// Add room name to DOM
+function outputRoomName(room) {
+  roomName.innerText = room;
+}
+
+socket.on('chatMessage',(data)=>{
+  console.log(data.msg)
+  outputMessage(data)
+})

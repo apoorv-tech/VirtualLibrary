@@ -69,7 +69,10 @@ router.get('/type1/:id',requireauth,async(req,res)=>{
             }
         
         if(exists){
-            res.redirect('/room/'+book._id)
+            if(res.locals.user.firstName)
+                res.redirect('/room/'+book._id+'?uid='+res.locals.user.firstName+'&&hassub=false&&room='+book.title)
+            else
+            res.redirect('/room/'+book._id+'?uid='+res.locals.user.username+'&&hassub=false&&room='+book.title)
         }
         else{
             res.render('viewbook/subscribe',{
@@ -161,7 +164,13 @@ router.get('/subscribe/:id',requireauth,async(req,res)=>{
             users.push(obj1);
             let count = book.count +1
             await Book.updateOne({_id: req.params.id}, {$set: { 'users' : users, 'count': count } } )
-            res.redirect('/room/'+book._id)
+            const hassub = true
+            res.render('room/room',{
+                fileused : "room",
+                users:users,
+                pdf : book.pdfPath,
+                room : book.title
+            })
         }
         
         

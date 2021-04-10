@@ -13,6 +13,7 @@ const cookieparser = require("cookie-parser")
 const methodoverride = require('method-override')
 const passport = require('passport');
 const session = require('express-session');
+const socket = require('socket.io')
 const bodyParser = require('body-parser')
 
 dotenv.config({
@@ -65,7 +66,41 @@ app.use(Authrouter)
 
 
 //starting the app
-app.listen(process.env.PORT || 4000,(err)=>{
+let server  = app.listen(process.env.PORT || 4000,(err)=>{
     if(err)console.log(err)
     else console.log('app has started')
+})
+
+
+var io = socket(server)
+
+io.use(async (socket,next)=>{
+	try {
+		socket.bookid = socket.handshake.query.bookid
+		socket.userid = socket.handshake.query.userid
+		next()
+	} catch (error) {
+		console.log(error)
+	}
+})
+
+io.sockets.on('connection',(socket)=>{
+    console.log("socket is connected " + socket.id)
+    socket.on("join",(data)=>{
+        if(data.hassub){
+            console.log('user has connected with us')
+            io.to(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
+        }
+        socket.join(socket.bookid)
+    })
+    socket.on("adduser",(user)=>{
+        io.to(socket.bookid).emit("adduser",user)
+    })
+    socket.on("removeuser",(user)=>{
+        io.to(socket.bookid).emit("removeuser",user)
+    })
+    socket.on("chatMessage",(data)=>{
+        io.to(socket.bookid).emit("chatMessage",data)
+        console.log(data.msg,data.user)
+    })
 })
