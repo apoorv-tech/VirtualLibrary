@@ -73,6 +73,7 @@ let server  = app.listen(process.env.PORT || 4000,(err)=>{
 
 
 var io = socket(server)
+let message = new Map()
 
 io.use(async (socket,next)=>{
 	try {
@@ -84,14 +85,25 @@ io.use(async (socket,next)=>{
 	}
 })
 
+
 io.sockets.on('connection',(socket)=>{
     console.log("socket is connected " + socket.id)
+    socket.on('disconnect',()=>{
+        io.to(socket.bookid).emit("removeuser",socket.userid)
+    })
     socket.on("join",(data)=>{
+        socket.join(socket.bookid)
+        if(message[socket.bookid]){
+            for(let i=0;i<message[socket.bookid].length;i++){
+                io.emit('chatMessage',{msg : message[socket.bookid][i].msg,user : message[socket.bookid][i].user})
+            }
+        }else{
+            message[socket.bookid] = []
+        }
         if(data.hassub){
             console.log('user has connected with us')
             io.to(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
         }
-        socket.join(socket.bookid)
     })
     socket.on("adduser",(user)=>{
         io.to(socket.bookid).emit("adduser",user)
@@ -100,6 +112,7 @@ io.sockets.on('connection',(socket)=>{
         io.to(socket.bookid).emit("removeuser",user)
     })
     socket.on("chatMessage",(data)=>{
+        message[socket.bookid].push({msg : data.msg,user : data.user})
         io.to(socket.bookid).emit("chatMessage",data)
         console.log(data.msg,data.user)
     })
