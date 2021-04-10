@@ -59,6 +59,10 @@
       <link rel="stylesheet" href="/css/viewbook.css">
     <% } %>
 
+    <% if(locals.fileused != null && locals.fileused == "category") { %>
+      <link rel="stylesheet" href="/css/viewbook.css">
+    <% } %>
+
     <% if(locals.fileused != null && locals.fileused == "subscribe") { %>
       <link rel="stylesheet" href="/css/subscribe.css">
     <% } %>
@@ -86,6 +90,10 @@
     <% } %>
 
     <% if(locals.fileused != null && locals.fileused == "viewbook") { %>
+      <script defer src="/js/viewbook.js"></script>
+    <% } %>
+
+    <% if(locals.fileused != null && locals.fileused == "category") { %>
       <script defer src="/js/viewbook.js"></script>
     <% } %>
 

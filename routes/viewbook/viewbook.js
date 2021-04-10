@@ -3,9 +3,10 @@ const {requireauth} = require("../../middleware/authmiddleware")
 const Book = require('../../models/book')
 const User = require("../../models/user")
 const User2 = require("../../models/user2")
+const Category = require("../../models/category")
 const router = express.Router();
 
-router.get('/',requireauth,async(req,res)=>{
+router.get('/',async(req,res)=>{
     let books = []
     try {
         books = await Book.find().sort({createdAt: 'desc'}).limit(50).exec()       
@@ -17,7 +18,36 @@ router.get('/',requireauth,async(req,res)=>{
         books: books 
     });
 })
+router.get('/category/:id',async(req,res)=>{
+    
+    
 
+    try {
+        const category =  await Category.findOne({category: req.params.id})
+        if(category){
+            let books = category.books;
+            res.render('viewbook/viewbook',{
+                fileused : "category",
+                category:category.category,
+                books: books
+               
+            });
+        }
+        else{
+            window.alert("no Such category")
+            res.redirect("/")
+        }
+        
+        
+        
+        
+    } catch (error) {
+        console.log(error);
+        res.redirect('/viewbook')
+    }
+    
+    
+})
 router.get('/type1/:id',requireauth,async(req,res)=>{
     
     
@@ -28,7 +58,7 @@ router.get('/type1/:id',requireauth,async(req,res)=>{
         let exists = false;
             for (let index = 0; index < users.length; index++) {
                 const element = users[index];
-                console.log("element" + element);
+               
                 const eluserid = String(element.userid)
             
                 if (eluserid==res.locals.user._id) {
@@ -62,11 +92,12 @@ router.get('/type2/:id',requireauth,async(req,res)=>{
 
     try {
         const book =  await Book.findOne({_id: req.params.id})
+        console.log(book.title);
         let users = book.users;
         let exists = false;
             for (let index = 0; index < users.length; index++) {
                 const element = users[index];
-                console.log("element" + element);
+                
                 const eluserid = String(element.userid)
             
                 if (eluserid==res.locals.user._id) {
@@ -116,7 +147,7 @@ router.get('/subscribe/:id',requireauth,async(req,res)=>{
 
         for (let index = 0; index < users.length; index++) {
             const element = users[index];
-            console.log("element" + element);
+            
             const eluserid = String(element.userid)
         
             if (eluserid==res.locals.user._id) {

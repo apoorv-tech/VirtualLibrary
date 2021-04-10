@@ -121,7 +121,13 @@
         <h3 class="title">contact info</h3>
 
         <div class="info">
-            <h3> <i class="fas fa-envelope"></i> username@gmail.com </h3>
+            <h3> <i class="fas fa-envelope"></i>
+                <% if(locals.user.mail) { %>
+                    <%= locals.user.mail %> 
+                <% } else { %>
+                    <%= locals.user.email %> 
+                <% } %> 
+            </h3>
             <h3> <i class="fas fa-phone"></i> +354-647-7483 </h3>
             
         </div>

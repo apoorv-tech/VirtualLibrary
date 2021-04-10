@@ -103,7 +103,7 @@
                     <ul class="category-list">
                         <% categories.forEach(category=>{ %>
                             <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-                                <a href="#"><%= category.category %></a>
+                                <a href="/viewbook/category/<%= category.category %> "><%= category.category %></a>
                                 <span>(<%= category.count %> )</span>
                             </li>    
                         <% }) %> 
