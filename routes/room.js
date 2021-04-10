@@ -2,9 +2,9 @@ const express = require('express');
 const Book = require('../models/book')
 const Category = require('../models/category')
 const router = express.Router();
+const {requireauth} = require("../middleware/authmiddleware")
 
-
-router.get('/:id',async(req,res)=>{
+router.get('/:id',requireauth,async(req,res)=>{
     
     
 
