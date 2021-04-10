@@ -14,11 +14,11 @@ router.get('/:id',async(req,res)=>{
             let users = book.users;
             res.render('room/room',{
                 fileused : "room",
-                users:users
+                users:users,
+                pdf : book.pdfPath
             });
         }
         else{
-            window.alert("no Such category")
             res.redirect("/")
         }
         
