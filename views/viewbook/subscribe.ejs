@@ -3,13 +3,13 @@
       <div class="book-info">
         <ul>
           <li class="nav-link">
-            <a href="../public/home.html">HOME</a>
+            <a href="../dashboard/dashboard.ejs">HOME</a>
         </li>
         <li class="nav-link">
-          <a href="./Profile.html">PROFILE</a>
+          <a href="../dashboard/profile.ejs">PROFILE</a>
       </li>
       <li class="nav-link">
-        <a href="./viewbooks.html">ADDED BOOKS</a>
+        <a href="../viewbook/viewbook.ejs">ADDED BOOKS</a>
     </li>
         </ul>
       </div>
@@ -35,7 +35,7 @@
           </p>
           <p class="full">
             <% if(subscribed) { %>
-              <a href="/viewbook/unsubscribe/<%= book._id %>">UnSubscribe</a>
+              <a id="btn" href="/viewbook/unsubscribe/<%= book._id %>">UnSubscribe</a>
           <% } else { %>
             <a href="/viewbook/subscribe/<%= book._id %>">Subscribe</a>
           <% } %>

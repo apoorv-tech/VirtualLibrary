@@ -120,7 +120,11 @@
     border:0;
     text-transform: uppercase;
   }
-  
+  .btn{
+    background:#c9e6ff;
+    border:0;
+    text-transform: uppercase;
+  }
   .contact form button:hover,.contact form button:focus{
     background:#25303b;
     color:#fff;

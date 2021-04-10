@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+	--dark-color-a: #667aff;
+	--dark-color-b: #7386ff;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	background: var(--light-color);
+	
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.btn {
+	cursor: pointer;
+	padding: 5px 15px;
+	background: var(--light-color);
+	color: var(--dark-color-a);
+	border: 0;
+	font-size: 17px;
+}
+.btn2 {
+	background: rgb(55, 126, 155);
+	color: #fff;
+	border: rgb(55, 126, 155) solid 1px;
+	outline: none;
+	margin:2px;
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 0rem 2rem 0rem 1rem;
+  }
+  .btn3 {
+	background: rgb(55, 126, 155);
+	color: #fff;
+	border: rgb(55, 126, 155) solid 1px;
+	outline: none;
+	margin-top:40px;
+	
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 1rem 1rem 1rem 1rem;
+  }
+  .btn4 {
+	background: rgb(55, 126, 155);
+	color: #fff;
+	border: rgb(55, 126, 155) solid 1px;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 1rem 1rem 1rem 1rem;
+  }
+.top-bar {
+  background:linear-gradient(120deg, #4ea7deab 0%, #c2e9fb 100%);
+  color: #fff;
+  padding: 1rem;
+}
+.but{
+  margin: auto;
+}
+
+.btn {
+  background: rgb(55, 126, 155);
+  color: #fff;
+  border: rgb(55, 126, 155) solid 1px;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0.7rem 2rem 1rem 1rem;
+}
+
+.btn:hover {
+  background: transparent;
+  border: rgb(55, 126, 155) solid 1px;
+}
+
+.page-info {
+  margin-left: 1rem;
+}
+
+.error {
+  background: linear-gradient(120deg, #4ea7deab 0%, #c2e9fb 100%);
+  color: #fff;
+  padding: 1rem;
+}
+
+@media(min-width:700px){
+  canvas{
+    width: 100%;
+	
+  }
+}
+@media(max-width:700px){
+  canvas{
+    width: 100%;
+  }
+}
+/* Chat Page */
+
+.chat-container {
+	max-width: 1000px;
+	background: #fff;
+	overflow: hidden;
+}
+
+.chat-header {
+	background: linear-gradient(120deg, #c2e9fb 100%, #4ea7deab 0%);
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.chat-main {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
+
+.chat-sidebar {
+	background: rgba(123, 121, 223, 0.726);
+	color: #fff;
+	padding: 20px 10px 60px;
+	overflow-y: scroll;
+}
+
+.chat-sidebar h2 {
+	font-size: 20px;
+	background: rgba(51, 43, 43, 0.1);
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.chat-sidebar h3 {
+	margin-bottom: 15px;
+}
+
+.chat-sidebar ul li {
+	padding: 10px 0;
+}
+
+.chat-messages {
+	padding: 30px;
+	max-height: 200%;
+	overflow-y: scroll;
+}
+
+.chat-messages .message {
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: var(--light-color);
+	border-radius: 5px;
+	overflow-wrap: break-word;
+}
+
+.chat-messages .message .meta {
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--dark-color-b);
+	opacity: 0.7;
+	margin-bottom: 7px;
+}
+
+.chat-messages .message .meta span {
+	color: #777;
+}
+
+.chat-form-container {
+	padding: 20px 30px;
+	background-color:rgba(101, 99, 189, 0.726);;
+}
+
+.chat-form-container form {
+	display: flex;
+}
+
+.chat-form-container input[type='text'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+    margin-left: 20%;
+	width: 50%;
+	flex: 1;
+}
+@media(min-width:1000px){
+/* Split the screen in half */
+.split {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	overflow-x: hidden;
+	
+  }
+  
+  /* Control the left side */
+  .left {
+	left: 0;
+	
+  }
+  
+  /* Control the right side */
+  .right {
+	right: 0;
+	
+  }
+}
+@media(max-width:1000px){
+	/* Split the screen in half */
+	.split {
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		overflow-x: hidden;
+		
+	  }
+	  
+	  /* Control the left side */
+	  .left {
+		left: 0;
+		
+	  }
+	  
+	  /* Control the right side */
+	  .right {
+		left: 0;
+		margin-top: 100%;
+		position: relative;
+	  }
+	}
+  
