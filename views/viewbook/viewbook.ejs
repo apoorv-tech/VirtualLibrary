@@ -11,6 +11,18 @@
         </div>
         <div>
             <ul class="nav-items">
+                <li class=" abc">
+                    <div class="dropdown">
+                        <button class="btn-outline-success">Filter</button>
+                        <div class="dropdown-content">
+                            <label class="container">Category
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                              </label>
+                        </div>
+                      </div>
+                    
+                </li>
                 <li class="nav-link bc">
                     <input class="form" type="search" placeholder="Search" aria-label="Search">
                 </li>
@@ -24,7 +36,7 @@
                 <li class="nav-link ab">
                     <a href="/dashboard/profile">Profile</a>
                 </li>
-                
+
                 <li class="nav-link ab">
                     <% if(locals.user) { %>
                         <li class="nav-link"><a href="/logout">Logout</a></li>

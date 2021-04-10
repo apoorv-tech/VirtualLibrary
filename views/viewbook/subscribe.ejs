@@ -33,14 +33,13 @@
             <p id="description"><%= book.description %>
             </p>
           </p>
-          <p class="full">
+          <span>
             <% if(subscribed) { %>
               <a id="btn" href="/viewbook/unsubscribe/<%= book._id %>">UnSubscribe</a>
           <% } else { %>
             <a href="/viewbook/subscribe/<%= book._id %>">Subscribe</a>
           <% } %>
-            
-          </p>
+        </span>
         </form>
       </div>
     </div>
