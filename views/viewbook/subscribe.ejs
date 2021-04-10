@@ -37,7 +37,13 @@
             <% if(subscribed) { %>
               <a id="btn" href="/viewbook/unsubscribe/<%= book._id %>">UnSubscribe</a>
           <% } else { %>
-            <a href="/viewbook/subscribe/<%= book._id %>">Subscribe</a>
+            <% let userid %> 
+            <% if(locals.user.username){ %>
+                <% userid = locals.user.username %> 
+           <% } else { %>
+                <% userid = locals.user.firstName %> 
+           <% } %> 
+            <a href="/viewbook/subscribe/<%= book._id %>?uid=<%= userid %>&&hassub=<%= true %>&&room=<%= book.title %>">Subscribe</a>
           <% } %>
         </span>
         </form>

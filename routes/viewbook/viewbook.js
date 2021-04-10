@@ -161,7 +161,13 @@ router.get('/subscribe/:id',requireauth,async(req,res)=>{
             users.push(obj1);
             let count = book.count +1
             await Book.updateOne({_id: req.params.id}, {$set: { 'users' : users, 'count': count } } )
-            res.redirect('/room/'+book._id)
+            const hassub = true
+            res.render('room/room',{
+                fileused : "room",
+                users:users,
+                pdf : book.pdfPath,
+                room : book.title
+            })
         }
         
         
