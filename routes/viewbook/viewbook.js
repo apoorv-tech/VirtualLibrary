@@ -69,7 +69,7 @@ router.get('/type1/:id',requireauth,async(req,res)=>{
             }
         
         if(exists){
-            res.send("chat window")
+            res.redirect('/room/'+book._id)
         }
         else{
             res.render('viewbook/subscribe',{
@@ -106,8 +106,6 @@ router.get('/type2/:id',requireauth,async(req,res)=>{
                 }
                 
             }
-        
-        
             res.render('viewbook/subscribe',{
                 fileused : "subscribe",
                 book: book,
@@ -163,8 +161,7 @@ router.get('/subscribe/:id',requireauth,async(req,res)=>{
             users.push(obj1);
             let count = book.count +1
             await Book.updateOne({_id: req.params.id}, {$set: { 'users' : users, 'count': count } } )
-            
-            res.send("Hemlo")
+            res.redirect('/room/'+book._id)
         }
         
         
