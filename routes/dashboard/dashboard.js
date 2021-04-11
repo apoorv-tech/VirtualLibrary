@@ -27,7 +27,8 @@ router.get('/',requireauth,async(req,res)=>{
         fileused : "dashboard",
         admin : admin,
         books : books,
-        categories: categories
+        categories: categories,
+        searchOptions: req.query
     });
 })
 

@@ -9,13 +9,28 @@ const router = express.Router();
 router.get('/',async(req,res)=>{
     let books = []
     try {
-        books = await Book.find().sort({createdAt: 'desc'}).limit(50).exec()       
+        // let query = await Book.find()
+        // console.log(query);
+        console.log(req.query.title);
+        if(req.query.title != null && req.query.title != ''){
+             books = await Book.find({"title": req.query.title})
+        }
+        else{
+            books = await Book.find()
+        }   
+        // console.log(query);
+        
+        
+        
     } catch (error) {
+        console.log(error);
         books = []
     }
+    
     res.render('viewbook/viewbook',{
         fileused : "viewbook",
-        books: books 
+        books: books,
+        searchOptions: req.query
     });
 })
 router.get('/category/:id',async(req,res)=>{
@@ -29,8 +44,8 @@ router.get('/category/:id',async(req,res)=>{
             res.render('viewbook/viewbook',{
                 fileused : "category",
                 category:category.category,
-                books: books
-               
+                books: books,
+                searchOptions: req.query
             });
         }
         else{
