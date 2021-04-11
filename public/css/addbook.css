@@ -81,7 +81,7 @@ ul{
   height:50px;
   line-height:50px;
   text-align:center;
-  background:#333;
+  text-decoration: overline;
   color:#fff;
   font-size:15px;
   font-family:"Open Sans",sans-serif;
@@ -106,9 +106,7 @@ ul{
   margin:0;
 }
 
-.contact form .full{
-  grid-column: 1 / 3;
-}
+
 
 .contact form button, .contact form input, .contact form textarea{
   width:100%;

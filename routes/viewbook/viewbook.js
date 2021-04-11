@@ -11,13 +11,15 @@ router.get('/',async(req,res)=>{
     try {
         // let query = await Book.find()
         // console.log(query);
+        if(req.query.checked=="true"){
+            if(req.query.title != null && req.query.title != ''){
+                books = await Book.find({"title": req.query.title})
+           }
+           else{
+               books = await Book.find()
+           }   
+        }else 
         console.log(req.query.title);
-        if(req.query.title != null && req.query.title != ''){
-             books = await Book.find({"title": req.query.title})
-        }
-        else{
-            books = await Book.find()
-        }   
         // console.log(query);
         
         

@@ -29,7 +29,8 @@
     <div class="centered">
       <div class="chat-container">
         <header class="chat-header">
-          <h4><a href="#" class="btn3">Download PDF</a></h4>
+          <% const path = "data:application/pdf;base64,"+bk.pdfPath.substr(41,bk.pdfPath-42) %> 
+          <h4><a download=pdfTitle href=<%= path %>  title=<%= room %>  class="btn3">Download PDF</a>
           <a href="/dashboard" class="btn">Home</a>
         </header>
         <main class="chat-main">
