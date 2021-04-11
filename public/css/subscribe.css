@@ -70,13 +70,13 @@
     background:linear-gradient(120deg, #4ea7deab 0%, #c2e9fb 100%);
   }
   /* FORM STYLES */
- 
+  
   .contact label {
     display:block;
     width: fit-content;
     line-height:50px;
     text-align:left;
-    background:rgba(81, 84, 119, 0.363);
+    text-decoration: underline;
     padding-left: 1%;
     padding-right: 1%;
     color:#fff;
@@ -97,24 +97,34 @@
     display:none;
     margin-top:10px;
   }
+  h2{
+    margin-left:10px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  p{
+    display: block;
+    text-transform: capitalize;
+  }
   span{
     background: rgba(73, 88, 92, 0.623);
-    padding:1px;
+    padding:2px;
     position: absolute;
     border-radius: 0.5rem;
     right: 40%;
-    bottom: 40%;
+    bottom: 20%;
   }
   span a{
     text-decoration: none;
     color: white;
-    padding:1px;
+    padding:3px;
     font-size:medium ;
+    line-height: 40px;
   }
   span a:hover{
     text-decoration: none;
     color: rgb(0, 0, 0);
-    padding:1px;
+    padding:3px;
     background: transparent;
   }
   .contact form label{

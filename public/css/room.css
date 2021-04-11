@@ -57,10 +57,21 @@ a {
 	border: rgb(55, 126, 155) solid 1px;
 	outline: none;
 	margin-top:40px;
-	
+	margin-left: 25px;
+	text-decoration: none;
 	border-radius: 10px;
 	cursor: pointer;
 	padding: 1rem 1rem 1rem 1rem;
+  }
+  .btn3:hover{
+	  background-color: transparent;
+	  border:rgb(55, 126, 155) solid 1px; ;
+  }
+  .btn3 a{
+	  
+	text-decoration: none;
+	font-family: cursive;
+	color: white;
   }
   .btn4 {
 	background: rgb(55, 126, 155);
