@@ -99,10 +99,11 @@
   }
   span{
     background: rgba(73, 88, 92, 0.623);
-    padding:0.5px;
+    padding:1px;
     position: absolute;
-    border-radius: 1rem;
-    
+    border-radius: 0.5rem;
+    right: 40%;
+    bottom: 40%;
   }
   span a{
     text-decoration: none;

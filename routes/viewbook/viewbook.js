@@ -169,7 +169,8 @@ router.get('/subscribe/:id',requireauth,async(req,res)=>{
                 fileused : "room",
                 users:users,
                 pdf : book.pdfPath,
-                room : book.title
+                room : book.title,
+                bk : book
             })
         }
         

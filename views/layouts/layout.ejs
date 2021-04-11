@@ -32,6 +32,12 @@
     <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
     <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <link defer rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script  src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.3.1/peerjs.min.js.map"></script>
+
+
     <link id="books-css" rel="stylesheet" href="/css/books.css">
     <script defer src="/js/fileupload.js"></script>
     
@@ -70,6 +76,10 @@
 
     <% if(locals.fileused != null && locals.fileused == "room") { %>
       <link rel="stylesheet" href="/css/room.css">
+    <% } %>
+
+    <% if(locals.fileused != null && locals.fileused == "voice") { %>
+      <link rel="stylesheet" href="/css/voice.css">
     <% } %>
     <!-- <script src="js/index.js"></script> -->
 
@@ -111,6 +121,11 @@
       <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
     <% } %>
+
+    <% if(locals.fileused != null && locals.fileused == "voice") { %>
+      <script defer src="/js/voice.js"></script>
+    <% } %>
+
 
     <script defer src="/js/loginreq.js"></script>
     <script defer src="/js/signupreq.js"></script>

@@ -71,6 +71,12 @@ let server  = app.listen(process.env.PORT || 4000,(err)=>{
     else console.log('app has started')
 })
 
+const { ExpressPeerServer } = require("peer");
+const peerServer = ExpressPeerServer(server, {
+  debug: true,
+});
+
+app.use("/peerjs", peerServer);
 
 var io = socket(server)
 let message = new Map()
@@ -79,6 +85,7 @@ io.use(async (socket,next)=>{
 	try {
 		socket.bookid = socket.handshake.query.bookid
 		socket.userid = socket.handshake.query.userid
+        socket.ud = socket.handshake.query.ud
 		next()
 	} catch (error) {
 		console.log(error)
@@ -88,32 +95,37 @@ io.use(async (socket,next)=>{
 
 io.sockets.on('connection',(socket)=>{
     console.log("socket is connected " + socket.id)
-    socket.on('disconnect',()=>{
-        io.to(socket.bookid).emit("removeuser",socket.userid)
-    })
+    // socket.on('disconnect',()=>{
+    //     io.to(socket.bookid).emit("removeuser",socket.userid)
+    // })
     socket.on("join",(data)=>{
-        socket.join(socket.bookid)
-        if(message[socket.bookid]){
-            for(let i=0;i<message[socket.bookid].length;i++){
-                io.emit('chatMessage',{msg : message[socket.bookid][i].msg,user : message[socket.bookid][i].user})
-            }
+        if(socket.userid==""){
+            console.log("hi in line 102")
+            socket.join(socket.bookid);
+            console.log(data.hassub)
+            socket.to(socket.bookid).broadcast.emit("user-connected",data.hassub);
         }else{
-            message[socket.bookid] = []
+            socket.join(socket.bookid)
+            if(message[socket.bookid]){
+                for(let i=0;i<message[socket.bookid].length;i++){
+                    io.emit('chatMessage',{msg : message[socket.bookid][i].msg,user : message[socket.bookid][i].user})
+                }
+            }else{
+                message[socket.bookid] = []
+            }
+            if(data.hassub){
+                console.log('user has connected with us')
+                io.to(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
+            }
         }
-        if(data.hassub){
-            console.log('user has connected with us')
-            io.to(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
-        }
-    })
-    socket.on("adduser",(user)=>{
-        io.to(socket.bookid).emit("adduser",user)
-    })
-    socket.on("removeuser",(user)=>{
-        io.to(socket.bookid).emit("removeuser",user)
     })
     socket.on("chatMessage",(data)=>{
         message[socket.bookid].push({msg : data.msg,user : data.user})
         io.to(socket.bookid).emit("chatMessage",data)
         console.log(data.msg,data.user)
     })
+
+    socket.on("message", (message) => {
+        io.to(socket.bookid).emit("createMessage",{user : socket.ud,msg : message});
+    });
 })
