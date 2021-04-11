@@ -11,12 +11,15 @@
         </div>
         <div>
             <ul class="nav-items">
-                <li class="nav-link bc">
-                    <input class="form" type="search" placeholder="Search" aria-label="Search">
-                </li>
-                <li class="nav-link bc">
-                    <button class=" btn-outline-success" type="submit">Search</button>
-                </li>
+                
+                <form action="/viewbook">
+                    <li class="nav-link bc">
+                        <input class="form" type="search" name="title" placeholder="Search for Books" aria-label="Search" value="<%= searchOptions.title %>">
+                    </li>
+                    <li class="nav-link bc">
+                        <button class=" btn-outline-success" type="submit">Search</button>
+                    </li>
+                </form>
                 <li class="nav-link ab">
                     <a href="/">Home</a>
                 </li>
@@ -105,7 +108,7 @@
             </div>
             <aside class="sidebar">
                 <div class="category">
-                    <h2>Collection</h2>
+                    <h2>Categories</h2>
                     <ul class="category-list">
                         <% categories.forEach(category=>{ %>
                             <li class="list-items" data-aos="fade-left" data-aos-delay="100">

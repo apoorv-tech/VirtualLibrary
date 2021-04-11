@@ -166,7 +166,7 @@ p{
 
 /* --------------- Site title ---------------- */
 main .site-title{
-    background: url('../images/corousal.jpg');
+    background: url('../images/library.jpg');
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -182,7 +182,7 @@ main .site-title .site-background{
 
 main .site-title h1, h3{
     margin: .3rem;
-    color: rgba(224, 115, 64, 0.651)
+    color: rgba(255, 255, 255, 0.651)
 }
 
 main .site-title .btn{
