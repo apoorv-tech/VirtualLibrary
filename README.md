@@ -32,7 +32,7 @@ Team Name: Big Coders
 * [Saksham Saxena](https://github.com/saksham12022002)
 * [Apoorv priyadarsh](https://github.com/apoorv-tech)
 * [Mradul Yadav](https://github.com/MradulYadav007)
-* [Anshika Gupta](https://github.com/anshika20191099)
+* [Anshika Mishra](https://github.com/anshika20191099)
 
 
 ### Made at:
