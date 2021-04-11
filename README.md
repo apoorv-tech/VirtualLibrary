@@ -12,7 +12,7 @@
   <a href="https://drive.google.com/file/d/1pGkoceY1iz_lbZ2KYPASogi1WP8Dzzor/edit">https://drive.google.com/drive/folders/13eHRc0EbYNiK0b1sKeRRxhI-0Ku3Q0Se?usp=sharing</a>
   
 ## Presentation Link:
-  <a href="https://drive.google.com/drive/folders/1kgwOT4zmnWE48tzmG8Smdu5p6q12DL2f?usp=sharing"> https://drive.google.com/drive/folders/1kgwOT4zmnWE48tzmG8Smdu5p6q12DL2f?usp=sharing </a>
+  <a href="https://drive.google.com/file/d/1y1rkrmgAAwd5aV_2VTwOSJUIdgHEWxVc/view?usp=sharing"> https://drive.google.com/drive/folders/1kgwOT4zmnWE48tzmG8Smdu5p6q12DL2f?usp=sharing </a>
   
   
 ## Table of Contents:
