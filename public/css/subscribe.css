@@ -5,13 +5,11 @@
   body{
     background-image: url(../images/cover.jpg);
     display: flex;
-    
-    background-repeat: no-repeat;
-    justify-content: center;
+    background-size: cover;
+    height: 50vh;
+    display: flex;
     background-attachment: fixed;
-    object-fit: cover;
-    color:#485e74;
-    line-height:1.6;
+    
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding:1em;
   }
@@ -71,96 +69,37 @@
   }
   /* FORM STYLES */
   
-  .contact label {
-    display:block;
-    width: fit-content;
-    line-height:50px;
-    text-align:left;
-    text-decoration: underline;
-    padding-left: 1%;
-    padding-right: 1%;
-    color:#fff;
-    font-size:15px;
-    font-family:"Open Sans",sans-serif;
-    text-transform:Uppercase;
-    font-weight:600;
-    border-radius:10px;
-    
-  }
-  #description{
-    padding:1em;
-    font-weight: 600;
-  }
-  .preview img {
-    width:100px;
-    height:100px;
-    display:none;
-    margin-top:10px;
-  }
-  h2{
-    margin-left:10px;
-    text-transform: uppercase;
-    font-size: 20px;
-  }
-  p{
-    display: block;
+
+
+form h3{
+    font-size: 1.2rem;
+    color:var(--yellow);
+    font-weight: normal;
     text-transform: capitalize;
-  }
-  span{
-    background: rgba(73, 88, 92, 0.623);
-    padding:2px;
-    position: absolute;
-    border-radius: 0.5rem;
-    right: 40%;
-    bottom: 20%;
-  }
-  span a{
-    text-decoration: none;
-    color: white;
-    padding:3px;
-    font-size:medium ;
-    line-height: 40px;
-  }
-  span a:hover{
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    padding:3px;
-    background: transparent;
-  }
-  .contact form label{
-    display:block;
-  }
+}
+form h3 span{
+  font-size: 1rem;
+  color: white;
+  text-decoration: underline;
+}
+
+div form span a{
+    background-color: rgb(255, 255, 255);
+    padding: 1%;
+    border: rgb(255, 255, 255) solid 1px;
+    border-radius: 2px;
+    
+    padding:0 .5rem;
+}
+div form span #btn:hover{
+  background-color: transparent;
+  border:rgb(255, 255, 255) solid 1px
+
+}
+
+
+
   
-  .contact form p{
-    margin:0;
-  }
-  
-  .contact form .full{
-    grid-column: 1 / 3;
-  }
-  
-  .contact form button, .contact form h1, .contact form textarea{
-    width:100%;
-    padding:1em;
-    border:1px solid #c9e6ff;
-  }
-  
-  .contact form button{
-    background:#c9e6ff;
-    border:0;
-    text-transform: uppercase;
-  }
-  .btn{
-    background:#c9e6ff;
-    border:0;
-    text-transform: uppercase;
-  }
-  .contact form button:hover,.contact form button:focus{
-    background:#25303b;
-    color:#fff;
-    outline:0;
-    transition: background-color 1s ease-out;
-  }
   
   /* LARGE SCREENS */
   @media(min-width:700px){

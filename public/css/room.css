@@ -175,7 +175,7 @@ a {
 
 .chat-messages {
 	padding: 30px;
-	max-height: 200%;
+	max-height: 500px;
 	overflow-y: scroll;
 }
 
