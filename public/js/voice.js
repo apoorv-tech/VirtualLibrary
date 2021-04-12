@@ -14,17 +14,11 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 
-let Port
-
-
-socket.on('port send',(port)=>{
-  Port = port
-})
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: Port,
+  port: "9000",
 });
 
 let myVideoStream;
