@@ -95,6 +95,7 @@ io.use(async (socket,next)=>{
 
 io.sockets.on('connection',(socket)=>{
     console.log("socket is connected " + socket.id)
+    console.log(process.env.PORT)
     io.emit('port send',String(process.env.PORT))
     // socket.on('disconnect',()=>{
     //     io.to(socket.bookid).emit("removeuser",socket.userid)
@@ -109,24 +110,24 @@ io.sockets.on('connection',(socket)=>{
             socket.join(socket.bookid)
             if(message[socket.bookid]){
                 for(let i=0;i<message[socket.bookid].length;i++){
-                    io.emit('chatMessage',{msg : message[socket.bookid][i].msg,user : message[socket.bookid][i].user})
+                    io.to(socket.id).emit('chatMessage',{msg : message[socket.bookid][i].msg,user : message[socket.bookid][i].user})
                 }
             }else{
                 message[socket.bookid] = []
             }
             if(data.hassub){
                 console.log('user has connected with us')
-                io.to(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
+                io.in(socket.bookid).emit("chatMessage",{msg :  `${socket.userid} has joined the chat`,user : ""})
             }
         }
     })
     socket.on("chatMessage",(data)=>{
         message[socket.bookid].push({msg : data.msg,user : data.user})
-        io.to(socket.bookid).emit("chatMessage",data)
+        io.in(socket.bookid).emit("chatMessage",data)
         console.log(data.msg,data.user)
     })
 
     socket.on("message", (message) => {
-        io.to(socket.bookid).emit("createMessage",{user : socket.ud,msg : message});
+        io.in(socket.bookid).emit("createMessage",{user : socket.ud,msg : message});
     });
 })
