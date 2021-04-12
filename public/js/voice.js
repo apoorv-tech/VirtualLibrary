@@ -17,7 +17,7 @@ myVideo.muted = true;
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
-  host: "/",
+  host: "https://virtual-library-hack36.herokuapp.com",
   port: "9000",
 });
 
