@@ -1,6 +1,6 @@
 let socket
 console.log("here in line 2 "+ROOM_ID)
-socket = io.connect('https://virtual-library-hack36.herokuapp.com',{
+socket = io.connect('https://127.0.0.1:4000',{
     query: {
       userid: "",
       bookid: String(ROOM_ID),

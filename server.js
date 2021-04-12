@@ -79,7 +79,7 @@ const peerServer = ExpressPeerServer(server, {
 app.use("/peerjs", peerServer);
 
 var io = socket(server)
-let message = new Map()
+let message = []
 
 io.use(async (socket,next)=>{
 	try {
@@ -108,9 +108,11 @@ io.sockets.on('connection',(socket)=>{
             socket.to(socket.bookid).broadcast.emit("user-connected",data.hassub);
         }else{
             socket.join(socket.bookid)
+            console.log('this the room '+socket.bookid)
             if(message[socket.bookid]){
                 for(let i=0;i<message[socket.bookid].length;i++){
                     io.to(socket.id).emit('chatMessage',{msg : message[socket.bookid][i].msg,user : message[socket.bookid][i].user})
+                    console.log(message[socket.bookid][i].msg)
                 }
             }else{
                 message[socket.bookid] = []
@@ -122,6 +124,7 @@ io.sockets.on('connection',(socket)=>{
         }
     })
     socket.on("chatMessage",(data)=>{
+        console.log('in line 127 msg pushed to '+socket.bookid+' and msg is '+data.msg+' and user '+data.user)
         message[socket.bookid].push({msg : data.msg,user : data.user})
         io.in(socket.bookid).emit("chatMessage",data)
         console.log(data.msg,data.user)

@@ -131,14 +131,13 @@ let exists = false
 
 if(hassub=="true")exists=true
 
-socket = io.connect('https://virtual-library-hack36.herokuapp.com',{
+socket = io.connect('http://127.0.0.1:4000',{
   query: {
     userid: String(userid),
-    bookdid: String(bookid) 
+    bookid: String(bookid) 
   }
 })
 socket.emit("join",{hassub : exists})
-socket.emit("message","hemmlo bhio")
 
 
 
