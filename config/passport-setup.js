@@ -9,7 +9,7 @@ module.exports = function (passport){
     passport.use(new GoogleStrategy({
         clientID:process.env.GOOGLE_CLIENT_ID,
         clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL:'https://virtual-library-hack36.herokuapp.com/auth/google/callback'
+        callbackURL:'http://127.0.0.1:4000/auth/google/callback'
     },
     async (accessToken, refreshtoken, profile, done)=>{
         console.log(profile);
