@@ -71,19 +71,19 @@ let server  = app.listen(process.env.PORT || 4000,(err)=>{
     else console.log('app has started')
 })
 
-const { ExpressPeerServer } = require("peer");
-const server2 = express()
+// const { ExpressPeerServer } = require("peer");
+// const server2 = express()
 
-const videoserver = server2.listen(9000,(err)=>{
-    if(err)console.log(err)
-    else console.log('peer server has started')
-})
+// const videoserver = server2.listen(9000,(err)=>{
+//     if(err)console.log(err)
+//     else console.log('peer server has started')
+// })
 
-const peerServer = ExpressPeerServer(videoserver, {
-  debug: true,
-});
+// const peerServer = ExpressPeerServer(videoserver, {
+//   debug: true,
+// });
 
-server2.use("/peerjs", peerServer);
+// server2.use("/peerjs", peerServer);
 
 var io = socket(server)
 let message = []
