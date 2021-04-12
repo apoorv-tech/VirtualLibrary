@@ -29,19 +29,16 @@
     <div class="centered">
       <div class="chat-container">
         <header class="chat-header">
-          <h4><a href="index.html" class="btn3">Download PDF</a></h4>
-          <a href="index.html" class="btn">Leave Room</a>
+          <% const path = "data:application/pdf;base64,"+bk.pdfPath.substr(41,bk.pdfPath-42) %> 
+          <h4><a download=pdfTitle href=<%= path %>  title=<%= room %>  class="btn3">Download PDF</a>
+          <a href="/dashboard" class="btn">Home</a>
         </header>
         <main class="chat-main">
           <div class="chat-sidebar">
             <h3><i class="fas fa-comments"></i> Room Name:</h3>
             <h2 id="room-name"><%= room %> </h2>
-            <h3><i class="fas fa-users"></i> Users</h3>
-            <ul id="users">
             </ul>
-            <button class="btn4">              <i class="fa fa-microphone"></i></button>
-
-            <button class="btn3" id="togglebtn">Join Voice</button>
+            <button class="btn3" id="togglebtn"><a  href="/room/voice/<%= bk._id %>" target="_blank">Join Voice</a></button>
           </div>
           
           <div class="chat-messages">

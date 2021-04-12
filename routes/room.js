@@ -3,7 +3,6 @@ const Book = require('../models/book')
 const Category = require('../models/category')
 const {requireauth} = require("../middleware/authmiddleware")
 const router = express.Router();
-const {requireauth} = require("../middleware/authmiddleware")
 
 router.get('/:id',requireauth,async(req,res)=>{
     try {
@@ -15,7 +14,8 @@ router.get('/:id',requireauth,async(req,res)=>{
                 fileused : "room",
                 users:users,
                 pdf : book.pdfPath,
-                room : book.title
+                room : book.title,
+                bk : book
             });
         }
         else{
@@ -26,5 +26,22 @@ router.get('/:id',requireauth,async(req,res)=>{
         res.redirect('/dashboard')
     } 
 })
+
+
+router.get('/voice/:id',requireauth,async(req,res)=>{
+    let ud
+    if(res.locals.user.firstName){
+        ud=res.locals.user.firstName 
+    }else{
+        ud=res.locals.user.username
+    }
+    res.render('room/voice',{
+        fileused : "voice",
+        roomId : req.params.id,
+        ud : ud 
+    })
+})
+
+
 
 module.exports= router;

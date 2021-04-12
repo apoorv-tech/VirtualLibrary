@@ -61,7 +61,9 @@
                     <% books.forEach(book=>{ %>
                         <% i++ %> 
                         <div class="blog-content" data-aos="fade-right" data-aos-delay="200">
-                            <img class="book-cover" src="<%= book.coverImagePath  %>" alt="post-1">
+                            <% const bookoid = "/viewbook/type1/"+book._id %> 
+                            
+                            <a href=<%= bookoid %> ><img class="book-cover" src="<%= book.coverImagePath  %> " alt="post-1"></a>
                             <div class="blog-title">
                                 <h3><%= book.title %> At Trending#<%= i %></h3>
                             </div>

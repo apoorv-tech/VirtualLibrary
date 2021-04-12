@@ -125,7 +125,7 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
-const togglebtn = document.querySelector('#togglebtn')
+// const togglebtn = document.querySelector('#togglebtn')
 
 let exists = false
 
@@ -139,25 +139,6 @@ socket = io.connect('http://127.0.0.1:4000',{
 })
 socket.emit("join",{hassub : exists})
 socket.emit("message","hemmlo bhio")
-
-socket.on("adduser",(user)=>{
-  const li = document.createElement('li');
-  li.innerText = user;
-  li.className = "userx"
-  userList.appendChild(li);
-})
-
-socket.on("removeuser",(user)=>{
-  console.log(user)
-  const arr = document.querySelectorAll('.userx')
-  for(let i=0;i<arr.length;i++){
-    //console.log(arr[i])
-    if(arr[i].innerHTML==user){
-      console.log(arr[i])
-      arr[i].parentNode.removeChild(arr[i])
-    }
-  }
-})
 
 
 
@@ -177,15 +158,7 @@ socket.on("removeuser",(user)=>{
 // })
 
 
-togglebtn.addEventListener('click',()=>{
-  if(togglebtn.innerHTML=="Join Voice"){
-    socket.emit("adduser",userid)
-    togglebtn.innerHTML="Leave Voice"
-  }else{
-    socket.emit("removeuser",userid)
-    togglebtn.innerHTML="Join Voice"
-  }
-})
+
 
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -237,3 +210,5 @@ socket.on('chatMessage',(data)=>{
   console.log(data.msg)
   outputMessage(data)
 })
+
+
