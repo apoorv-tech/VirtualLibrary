@@ -1,6 +1,6 @@
 let socket
 console.log("here in line 2 "+ROOM_ID)
-socket = io.connect('https://127.0.0.1:4000',{
+socket = io.connect('http://127.0.0.1:4000',{
     query: {
       userid: "",
       bookid: String(ROOM_ID),
@@ -14,17 +14,11 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 
-let Port
-
-
-socket.on('port send',(port)=>{
-  Port = port
-})
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: Port,
+  port: "4000",
 });
 
 let myVideoStream;
