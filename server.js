@@ -96,7 +96,7 @@ io.use(async (socket,next)=>{
 io.sockets.on('connection',(socket)=>{
     console.log("socket is connected " + socket.id)
     console.log(process.env.PORT)
-    io.emit('port send',String(process.env.PORT))
+    io.to(socket.id).emit('port send',String(process.env.PORT))
     // socket.on('disconnect',()=>{
     //     io.to(socket.bookid).emit("removeuser",socket.userid)
     // })
