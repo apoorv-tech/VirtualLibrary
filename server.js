@@ -71,12 +71,19 @@ let server  = app.listen(process.env.PORT || 4000,(err)=>{
     else console.log('app has started')
 })
 
-const { ExpressPeerServer } = require("peer");
-const peerServer = ExpressPeerServer(server, {
-  debug: true,
-});
+// const { ExpressPeerServer } = require("peer");
+// const server2 = express()
 
-app.use("/peerjs", peerServer);
+// const videoserver = server2.listen(9000,(err)=>{
+//     if(err)console.log(err)
+//     else console.log('peer server has started')
+// })
+
+// const peerServer = ExpressPeerServer(videoserver, {
+//   debug: true,
+// });
+
+// server2.use("/peerjs", peerServer);
 
 var io = socket(server)
 let message = []
@@ -95,8 +102,6 @@ io.use(async (socket,next)=>{
 
 io.sockets.on('connection',(socket)=>{
     console.log("socket is connected " + socket.id)
-    console.log(process.env.PORT)
-    io.emit('port send',String(process.env.PORT))
     // socket.on('disconnect',()=>{
     //     io.to(socket.bookid).emit("removeuser",socket.userid)
     // })
