@@ -9,7 +9,7 @@ module.exports = function (passport){
     passport.use(new GoogleStrategy({
         clientID:process.env.GOOGLE_CLIENT_ID,
         clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL:'http://127.0.0.1:4000/auth/google/callback'
+        callbackURL:'https://virtual-library-5ysd.onrender.com/auth/google/callback'
     },
     async (accessToken, refreshtoken, profile, done)=>{
         console.log(profile);
