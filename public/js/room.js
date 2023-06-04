@@ -131,7 +131,7 @@ let exists = false
 
 if(hassub=="true")exists=true
 
-socket = io.connect('http://127.0.0.1:4000',{
+socket = io.connect('https://virtual-library-5ysd.onrender.com',{
   query: {
     userid: String(userid),
     bookid: String(bookid) 
